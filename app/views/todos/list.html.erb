@@ -1,6 +1,42 @@
 
 
 <div class="row">
-  <div class="col-6">Tareas pendientes</div>
-  <div class="col-6">Tareas completadas</div>
+  <div class="col-6">
+  	no completas
+  	<table>
+		<tr>
+			<th> Título </th>
+			<th> Descripción </th>
+		</tr>
+		<% @todos.where(completed: nil).each do |todo| %>
+		<tr>
+			<td> <%= todo.title %> </td>
+			<td> <%= todo.description %> </td>
+			<td> <%= link_to "Ver", todo_path(todo.id) %> </td>
+			<td> <%= link_to "Editar", edit_todo_path(todo.id) %> </td>
+			<td> <%= link_to "Eliminar", todo_path(todo.id), method: :delete, data: { confirm: '¿Estás seguro de eliminar tarea?'} %> </td>
+			<td> <%= link_to "Terminar tarea", task_done_path(todo.id) %> </td>
+		</tr>
+		<% end %>
+	</table>
+  </div>
+  <div class="col-6">
+  	completas
+  	<table>
+		<tr>
+			<th> Título </th>
+			<th> Descripción </th>
+		</tr>
+		<% @todos.where(completed: true).each do |todo| %>
+		<tr>
+			<td> <%= todo.title %> </td>
+			<td> <%= todo.description %> </td>
+			<td> <%= link_to "Ver", todo_path(todo.id) %> </td>
+			<td> <%= link_to "Editar", edit_todo_path(todo.id) %> </td>
+			<td> <%= link_to "Eliminar", todo_path(todo.id), method: :delete, data: { confirm: '¿Estás seguro de eliminar tarea?'} %> </td>
+			<td> <%= link_to "Terminar tarea", task_done_path(todo.id) %> </td>
+		</tr>
+		<% end %>
+	</table>
+  </div>
 </div>
