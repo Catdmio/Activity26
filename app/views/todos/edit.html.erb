@@ -1,0 +1,9 @@
+<h1> Editar una tarea pendiente ʕºᴥºʔ </h1>
+
+<%= form_with model: @todo, local: true do |form| %>
+  <%= form.label 'Asunto' %>
+  <%= form.text_field :title %>
+  <%= form.label 'Descripción' %>
+  <%= form.text_area :description %>
+  <%= form.submit %>
+<% end %>

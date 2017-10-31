@@ -1,0 +1,10 @@
+<h1> Vista de ToDo <%= @todo.title %> </h1>
+<p> <%= @todo.description %></p>
+
+<!-- metodo que muestra si la tarea esta completa o no -->
+<% if @todo.completed == true %>
+	<h4> ¡Yay! la has terminado :D! </h4>
+
+<% else %>
+	<h4> Esta tarea aún está pendiente :( </h4>
+<% end %>
